@@ -1,0 +1,13 @@
+sl d:\dev\cs
+dotnet new globaljson --sdk-version 5.0.401 --output .\Brasileirao\Brasileirao.Api
+dotnet new webapi --output .\Brasileirao\Brasileirao.Api --framework net5.0
+dotnet new sln -o Brasileirao
+dotnet sln Brasileirao add Brasileirao/Brasileirao.Api
+dotnet add .\Brasileirao.Api package NLog.Extensions.Logging
+dotnet new classlib --output .\Brasileirao\Brasileirao.Core --framework net5.0
+dotnet sln Brasileirao add Brasileirao/Brasileirao.Core
+dotnet add .\Brasileirao.Core package NullGuard.Fody
+
+dotnet new xunit --output .\Brasileirao.UnitTests --framework net5.0
+dotnet sln add Brasileirao.UnitTests 
+dotnet add Brasileirao.UnitTests reference Brasileirao.Core
