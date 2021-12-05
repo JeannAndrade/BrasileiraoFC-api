@@ -9,5 +9,6 @@ dotnet sln Brasileirao add Brasileirao/Brasileirao.Core
 dotnet add .\Brasileirao.Core package NullGuard.Fody
 
 dotnet new xunit --output .\Brasileirao.UnitTests --framework net5.0
-dotnet sln add Brasileirao.UnitTests 
+dotnet sln add Brasileirao.UnitTests
 dotnet add Brasileirao.UnitTests reference Brasileirao.Core
+dotnet add Brasileirao.Api reference Brasileirao.Core

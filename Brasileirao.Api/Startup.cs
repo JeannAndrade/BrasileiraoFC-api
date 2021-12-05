@@ -32,19 +32,18 @@ namespace Brasileirao.Api
     public void ConfigureServices(IServiceCollection services)
     {
       services.ConfigureCors();
-      services.ConfigureIISIntegration();
       services.ConfigureLoggerService();
+      services.ConfigureRepositories();
       services.AddControllers();
       services
           .AddSwaggerGen(c =>
           {
-            c
-                      .SwaggerDoc("v1",
-                      new OpenApiInfo
-                      {
-                        Title = "Brasileirao.Api",
-                        Version = "v1"
-                      });
+            c.SwaggerDoc("v1",
+              new OpenApiInfo
+              {
+                Title = "Brasileirao.Api",
+                Version = "v1"
+              });
           });
     }
 
@@ -75,8 +74,7 @@ namespace Brasileirao.Api
 
       app.UseAuthorization();
 
-      app
-          .UseEndpoints(endpoints =>
+      app.UseEndpoints(endpoints =>
           {
             endpoints.MapControllers();
           });
